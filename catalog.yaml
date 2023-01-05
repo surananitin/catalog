@@ -1,0 +1,15 @@
+#%Catalog Descriptor 1.0
+projects:
+  - main: american-flights-system-api-1.0.0-oas/api.json
+    assetId: american-flights-system-api
+    version: 1.0.1
+    contact:
+      name: 'Jane Doe'
+      email: 'jane.doe@org.com'
+    documentation:
+      Home: documentation/homeAFS.md
+    apiVersion: v1
+  - main: united-flights-system-api-1.0.0-oas/api.json
+    assetId: united-flights-api
+    version: 1.0.0
+    apiVersion: v1

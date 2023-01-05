@@ -1,0 +1,150 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "United Flights API",
+    "version": "v1"
+  },
+  "paths": {
+    "/flights": {
+      "get": {
+        "operationId": "Get flights",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "required": false,
+            "in": "query",
+            "enum": [
+              "SFO",
+              "LAX",
+              "PDX",
+              "CLE",
+              "PDF"
+            ],
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-amf-mediaType": "application/json",
+            "schema": {
+              "example": [
+                {
+                  "airlineName": "United",
+                  "price": 400.0,
+                  "departureDate": "2015/03/20",
+                  "planeType": "Boeing 737",
+                  "origin": "MUA",
+                  "code": "ER38sd",
+                  "emptySeats": 0,
+                  "destination": "SFO"
+                },
+                {
+                  "airlineName": "United",
+                  "price": 345.99,
+                  "departureDate": "2015/02/11",
+                  "planeType": "Boeing 737",
+                  "origin": "MUA",
+                  "code": "ER45if",
+                  "emptySeats": 52,
+                  "destination": "LAX"
+                }
+              ],
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Flight"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "x-amf-mediaType": "application/json",
+            "in": "body",
+            "name": "generated",
+            "schema": {
+              "$ref": "#/definitions/Flight"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "x-amf-mediaType": "application/json",
+            "schema": {
+              "example": {
+                "message": "Flight added (but not really)"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Flight": {
+      "example": {
+        "airlineName": "United",
+        "price": 400.0,
+        "departureDate": "2015/03/20",
+        "planeType": "Boeing 737",
+        "origin": "MUA",
+        "code": "ER38sd",
+        "emptySeats": 0,
+        "destination": "SFO"
+      },
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "airlineName",
+        "price",
+        "departureDate",
+        "planeType",
+        "origin",
+        "code",
+        "emptySeats",
+        "destination"
+      ],
+      "properties": {
+        "ID": {
+          "type": "integer"
+        },
+        "airlineName": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number"
+        },
+        "departureDate": {
+          "type": "string"
+        },
+        "planeType": {
+          "type": "string"
+        },
+        "origin": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "emptySeats": {
+          "type": "integer"
+        },
+        "destination": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
